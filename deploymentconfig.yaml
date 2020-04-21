@@ -1,0 +1,20 @@
+﻿apiVersion: apps/v1
+kind: DeploymentConfig
+metadata:
+  name: example
+  namespace: testopenshift
+spec:
+  selector:
+    matchLabels:
+      app: hello-openshift
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: hello-openshift
+    spec:
+      containers:
+        - name: hello-openshift
+          image: gcr.io/fleet-resolver-237016/spring-boot-example:v3
+          ports:
+            - containerPort: 8080
